@@ -152,7 +152,7 @@ $(function() {
         self.setTemperature = function(){
             if(self.isNumeric($("#enclosureSetTemp").val())){
                 $.ajax({
-                    url: "/plugin/enclosure/setEnclosureTemperature",
+                    url: OctoPrint.getBaseUrl()+"/plugin/enclosure/setEnclosureTemperature",
                     type: "GET",
                     dataType: "json",
                     data: {"enclosureSetTemp": Number($("#enclosureSetTemp").val())},
@@ -191,7 +191,7 @@ $(function() {
 
         self.turnOffHeater = function(){
             $.ajax({
-                url: "/plugin/enclosure/setEnclosureTemperature",
+                url: OctoPrint.getBaseUrl()+"/plugin/enclosure/setEnclosureTemperature",
                 type: "GET",
                 dataType: "json",
                 data: {"enclosureSetTemp":0},
@@ -204,7 +204,7 @@ $(function() {
 
         self.clearGPIOMode = function(){
             $.ajax({
-                url: "/plugin/enclosure/clearGPIOMode",
+                url: OctoPrint.getBaseUrl()+"/plugin/enclosure/clearGPIOMode",
                 type: "GET",
                 dataType: "json",
                  success: function(data) {
@@ -216,7 +216,7 @@ $(function() {
         self.getUpdateBtnStatus = function(){
 
             $.ajax({
-                url: "/plugin/enclosure/getUpdateBtnStatus",
+                url: OctoPrint.getBaseUrl()+"/plugin/enclosure/getUpdateBtnStatus",
                 type: "GET"
             });
         };
@@ -224,7 +224,7 @@ $(function() {
         self.requestEnclosureTemperature = function(){
             return $.ajax({
                     type: "GET",
-                    url: "/plugin/enclosure/getEnclosureTemperature",
+                    url: OctoPrint.getBaseUrl()+"/plugin/enclosure/getEnclosureTemperature",
                     async: false
                 }).responseText;
         };
@@ -232,7 +232,7 @@ $(function() {
         self.requestEnclosureSetTemperature = function(){
             return $.ajax({
                     type: "GET",
-                    url: "/plugin/enclosure/getEnclosureSetTemperature",
+                    url: OctoPrint.getBaseUrl()+"/plugin/enclosure/getEnclosureSetTemperature",
                     async: false
                 }).responseText;
         };
@@ -249,7 +249,7 @@ $(function() {
                     type: "GET",
                     dataType: "json",
                     data: {"io": data[0], "status": data[1]},
-                    url: "/plugin/enclosure/setIO",
+                    url: OctoPrint.getBaseUrl()+"/plugin/enclosure/setIO",
                     async: false
             });
         };
@@ -268,7 +268,7 @@ $(function() {
                       type: "GET",
                       dataType: "json",
                       data: {"io": io, "pwmVal": pwmVal},
-                      url: "/plugin/enclosure/setPWM",
+                      url: OctoPrint.getBaseUrl()+"/plugin/enclosure/setPWM",
               });
             }
         };
@@ -290,7 +290,7 @@ $(function() {
                       type: "GET",
                       dataType: "json",
                       data: {"io": io, "red": r,"green": g,"blue": b},
-                      url: "/plugin/enclosure/setNeopixel",
+                      url: OctoPrint.getBaseUrl()+"/plugin/enclosure/setNeopixel",
               });
             }
         };
