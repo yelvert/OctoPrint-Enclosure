@@ -112,10 +112,10 @@ def readBME280All(addr=DEVICE):
     var1 = (dig_P3 * var1 * var1 / 524288.0 + dig_P2 * var1) / 524288.0
     var1 = (1.0 + var1 / 32768.0) * dig_P1
     if var1 == 0:
-    pressure=0
+        pressure=0
     else:
-    pressure = 1048576.0 - pres_raw
-    pressure = ((pressure - var2 / 4096.0) * 6250.0) / var1
+        pressure = 1048576.0 - pres_raw
+        pressure = ((pressure - var2 / 4096.0) * 6250.0) / var1
     var1 = dig_P9 * pressure * pressure / 2147483648.0
     var2 = pressure * dig_P8 / 32768.0
     pressure = pressure + (var1 + var2 + dig_P7) / 16.0
@@ -125,9 +125,9 @@ def readBME280All(addr=DEVICE):
     humidity = (hum_raw - (dig_H4 * 64.0 + dig_H5 / 16384.0 * humidity)) * (dig_H2 / 65536.0 * (1.0 + dig_H6 / 67108864.0 * humidity * (1.0 + dig_H3 / 67108864.0 * humidity)))
     humidity = humidity * (1.0 - dig_H1 * humidity / 524288.0)
     if humidity > 100:
-    humidity = 100
+        humidity = 100
     elif humidity < 0:
-    humidity = 0
+        humidity = 0
 
     return temperature/100.0,pressure/100.0,humidity
 
